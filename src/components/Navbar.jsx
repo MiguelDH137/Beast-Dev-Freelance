@@ -47,7 +47,7 @@ const Navbar = () => {
         visible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav aria-label="Navegación principal" className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
           href="#hero"
           className="flex items-center gap-2 group"

@@ -25,15 +25,17 @@ const Footer = () => {
           </span>
         </div>
 
-        <ul className="flex items-center gap-6 text-sm text-text-medium">
-          {FOOTER_LINKS.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className="hover:text-white transition-colors">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Enlaces del pie de página">
+          <ul className="flex items-center gap-6 text-sm text-text-medium">
+            {FOOTER_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="hover:text-white transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <p className="text-sm text-text-medium">
           © {year} Beasts.dev Freelance. Todos los derechos reservados.

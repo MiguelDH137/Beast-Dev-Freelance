@@ -31,6 +31,7 @@ const SocialCard = ({ name, description, ctaLabel, href, icon, accent = 'hover:s
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
+      <span className="sr-only">(se abre en una pestaña nueva)</span>
     </span>
   </a>
 );

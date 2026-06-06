@@ -1,4 +1,6 @@
-const FeatureCard = ({ icon, title, description, isExpanded, onToggle }) => {
+import { memo } from 'react';
+
+const FeatureCard = memo(function FeatureCard({ icon, title, description, isExpanded, index, onToggle }) {
   const wrapperStyles = isExpanded
     ? 'border-brand-primary shadow-[0_0_30px_rgba(255,102,0,0.4)] scale-[1.03]'
     : 'border-white/10 hover:border-brand-primary hover:shadow-[0_0_20px_rgba(255,102,0,0.25)] hover:scale-[1.02]';
@@ -9,7 +11,7 @@ const FeatureCard = ({ icon, title, description, isExpanded, onToggle }) => {
     >
       <button
         type="button"
-        onClick={onToggle}
+        onClick={() => onToggle(index)}
         className="w-full flex flex-col items-center text-center gap-3 p-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-xl"
         aria-expanded={isExpanded}
         aria-controls={`feature-panel-${title.replace(/\s+/g, '-').toLowerCase()}`}
@@ -59,6 +61,6 @@ const FeatureCard = ({ icon, title, description, isExpanded, onToggle }) => {
       </div>
     </div>
   );
-};
+});
 
 export default FeatureCard;

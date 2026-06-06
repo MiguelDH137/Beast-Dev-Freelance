@@ -14,8 +14,14 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-surface-base text-white overflow-x-hidden">
+      <a
+        href="#main-content"
+        className="skip-link"
+      >
+        Saltar al contenido principal
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <FeaturesBar />
         <Methodology />

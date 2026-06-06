@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import FeatureCard from '../components/FeatureCard.jsx';
 
 const FEATURES = [
@@ -57,9 +57,9 @@ const FEATURES = [
 const FeaturesBar = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
-  const handleToggle = (index) => {
+  const handleToggle = useCallback((index) => {
     setExpandedIndex((current) => (current === index ? null : index));
-  };
+  }, []);
 
   return (
     <section className="border-y border-white/5 bg-surface-container/30">
@@ -72,7 +72,8 @@ const FeaturesBar = () => {
               title={feature.title}
               description={feature.description}
               isExpanded={expandedIndex === index}
-              onToggle={() => handleToggle(index)}
+              index={index}
+              onToggle={handleToggle}
             />
           ))}
         </div>
