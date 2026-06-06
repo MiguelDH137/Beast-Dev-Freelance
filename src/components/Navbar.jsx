@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-surface-base/70 backdrop-blur-xl border-b border-white/10">
-      <nav aria-label="Navegación principal" className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav aria-label="Navegación principal" className="max-w-7xl mx-auto px-6 py-[2.8px] flex items-center justify-between">
         <a
           href="#hero"
           className="flex items-center gap-2 group"
