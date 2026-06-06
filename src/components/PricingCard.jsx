@@ -1,4 +1,4 @@
-import Button from './Button.jsx';
+import MagneticButton from './MagneticButton.jsx';
 
 const PricingCard = ({ name, price, features, popular = false, badge }) => (
   <div
@@ -43,9 +43,9 @@ const PricingCard = ({ name, price, features, popular = false, badge }) => (
       ))}
     </ul>
 
-    <Button href="#contacto" size="md" className="w-full">
+    <MagneticButton href="#contacto" size="md" className="w-full">
       Solicita el tuyo
-    </Button>
+    </MagneticButton>
   </div>
 );
 

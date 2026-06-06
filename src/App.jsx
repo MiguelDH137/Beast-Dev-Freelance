@@ -1,19 +1,27 @@
+import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
-import Hero from './sections/Hero.jsx';
-import FeaturesBar from './sections/FeaturesBar.jsx';
-import Methodology from './sections/Methodology.jsx';
-import Pricing from './sections/Pricing.jsx';
-import Portfolio from './sections/Portfolio.jsx';
-import About from './sections/About.jsx';
 import Contact from './sections/Contact.jsx';
 import { useSmoothScroll } from './hooks/useSmoothScroll.js';
+import { useLenis } from './hooks/useLenis.js';
+
+const Hero = lazy(() => import('./sections/Hero.jsx'));
+const FeaturesBar = lazy(() => import('./sections/FeaturesBar.jsx'));
+const Methodology = lazy(() => import('./sections/Methodology.jsx'));
+const Pricing = lazy(() => import('./sections/Pricing.jsx'));
+const Portfolio = lazy(() => import('./sections/Portfolio.jsx'));
+const About = lazy(() => import('./sections/About.jsx'));
+
+const SectionFallback = () => (
+  <div className="min-h-[200px]" aria-hidden="true" />
+);
 
 const App = () => {
+  useLenis();
   useSmoothScroll();
 
   return (
-    <div className="min-h-screen bg-surface-base text-white overflow-x-hidden">
+    <div className="min-h-screen bg-surface-base text-white">
       <a
         href="#main-content"
         className="skip-link"
@@ -22,12 +30,24 @@ const App = () => {
       </a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <Hero />
-        <FeaturesBar />
-        <Methodology />
-        <Pricing />
-        <Portfolio />
-        <About />
+        <Suspense fallback={<SectionFallback />}>
+          <Hero />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <FeaturesBar />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Methodology />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Pricing />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Portfolio />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <About />
+        </Suspense>
         <Contact />
       </main>
       <Footer />

@@ -15,7 +15,7 @@
 
 ## 2. Stack Tecnológico Estricto
 
-Para garantizar la máxima velocidad de carga y mantener el código ligero, **está estrictamente prohibido instalar frameworks pesados o librerías externas** (Framer Motion, Formik, React-Bootstrap, GSAP, AOS, etc.).
+Para garantizar la máxima velocidad de carga y mantener el código ligero, **está estrictamente prohibido instalar frameworks pesados o librerías externas** (Formik, React-Bootstrap, GSAP, AOS, etc.). Ver excepciones aprobadas en §6.8.
 
 | Capa | Tecnología |
 |---|---|
@@ -25,7 +25,7 @@ Para garantizar la máxima velocidad de carga y mantener el código ligero, **es
 | Estilos | Tailwind CSS (clases de utilidad exclusivamente) |
 | Tipografía | Google Fonts (Montserrat) cargado por `<link>` |
 
-Cualquier comportamiento interactivo (modales, toggles, navegación, smooth scroll) debe resolverse con **React** (`useState`, `useEffect`, `useRef`) y **clases de Tailwind CSS**. No se admiten polyfills, librerías de animación ni plugins de terceros.
+Cualquier comportamiento interactivo (modales, toggles, navegación, smooth scroll) debe resolverse con **React** (`useState`, `useEffect`, `useRef`) y **clases de Tailwind CSS**. Excepción: ver §6.8 para animaciones declarativas aprobadas.
 
 ---
 
@@ -41,7 +41,7 @@ La landing es una **Single Page Application** con las siguientes secciones, en e
    - **Plan €25/mes** — Single Landing Page, Mobile Optimized, Basic SEO.
    - **Plan €35/mes (Most Popular)** — Multi-page Sitio, Advanced SEO tactics, CMS Integration, Priority Support.
    - **Plan €55/mes** — Everything in Pro, AI Chatbot Integration, Dynamic Conversion.
-6. **Casos de Éxito (Portafolio)** — Grid de proyectos: TechNova Solutions, Aura Lifestyle, Nexus AI Platform. Tarjetas con efecto hover.
+6. **Proyectos Realizados (Portafolio)** — Grid de proyectos: TechNova Solutions, Aura Lifestyle, Nexus AI Platform. Tarjetas con efecto hover.
 7. **Sobre Nosotros** — Humanización de la marca con el logotipo de las tres bestias (Lobo, Zorro, Dálmata) y copy orientado a ingeniería de software de alto rendimiento.
 8. **CTA Final (Contacto)** — id `#contacto`. Título *"¡Hagamos Realidad tu Próxima Página Web!"*. Dos tarjetas de redirección directa: **Instagram** y **TikTok**.
 9. **Footer** — Enlaces legales y firma de marca.
@@ -121,13 +121,35 @@ Comandos estándar del stack (ajustar `package.json` al inicializar el proyecto 
 
 ## 6. Reglas de Implementación
 
-1. **Cero dependencias nuevas.** Toda interacción se resuelve con React + Tailwind.
+1. **Cero dependencias nuevas.** Toda interacción se resuelve con React + Tailwind. Excepción: ver §6.8.
 2. **Mobile-first obligatorio.** Diseñar primero para móvil y escalar con breakpoints `sm`, `md`, `lg`, `xl`.
 3. **Smooth Scroll funcional.** Todos los CTAs del sitio deben llevar a `#contacto` con desplazamiento suave. Implementar con `scroll-behavior: smooth` en CSS global **o** con un hook `useSmoothScroll` que intercepte los clics en anchors internos.
 4. **Copy en español.** Tono persuasivo, profesional y directo. Respetar la maqueta textual de la sección 3.
 5. **Dark mode permanente.** No se contemplan temas claros; consultar paleta en `DESIG.md`.
 6. **Accesibilidad básica:** etiquetas `alt` en imágenes, `aria-label` en botones solo con ícono, contraste suficiente en textos (`#a1a1aa` sobre `#131313` es el mínimo aceptable, preferir `#ffffff` para cuerpo principal).
 7. **Rendimiento:** lazy load de imágenes pesadas (mockups), evitar re-renders innecesarios con `useMemo`/`useCallback` solo cuando aporten valor real.
+
+### 6.8 Excepciones aprobadas de animación
+
+Por aprobación explícita del equipo, las siguientes librerías están **excepcionalmente permitidas** en este proyecto, aunque §2 y §6.1 las prohibirían por defecto. La aprobación es limitada a estos tres paquetes y al alcance descrito; cualquier ampliación requiere nueva aprobación.
+
+| Librería              | Tamaño gz | Propósito autorizado                                                                 |
+| --------------------- | --------- | ------------------------------------------------------------------------------------ |
+| `motion`              | ~12-16 kB | Animaciones declarativas en React: `whileInView`, parallax, springs, `AnimatePresence` |
+| `lenis`               | ~5 kB     | Smooth scroll premium (reemplaza `scroll-behavior: smooth` nativo en CSS)            |
+| `@number-flow/react`  | ~5 kB     | Counters numéricos animados (Methodology 01/02/03)                                    |
+
+**Restricciones de uso**:
+- `motion` solo donde CSS keyframes + `IntersectionObserver` no son suficientes.
+- `lenis` reemplaza completamente el smooth scroll nativo; no se combina con `scroll-behavior: smooth` (quitar la directiva CSS de `index.css`).
+- `@number-flow/react` solo para counters numéricos; para texto se usa `motion`.
+- El bundle gzipped total no debe superar **100 kB** (baseline sin deps de animación: ~55 kB → tope: +45 kB).
+- Cualquier nueva librería de animación o efecto requiere aprobación explícita y actualización de esta sección.
+
+**Coordinación con accesibilidad**:
+- Toda la app se envuelve en `<MotionConfig reducedMotion="user">` para que `motion` respete automáticamente la preferencia del sistema operativo.
+- Lenis debe detenerse (`lenis.stop()`) si la media query `prefers-reduced-motion: reduce` está activa.
+- El `MagneticButton` no afecta a dispositivos touch (el listener `onMouseMove` no se dispara en touch).
 
 ---
 
@@ -147,8 +169,9 @@ Antes de dar por terminada cualquier entrega, el agente debe validar:
 - [ ] No hay errores ni warnings en la consola del navegador.
 - [ ] No hay `console.log`, código comentado ni archivos muertos.
 - [ ] El copy está 100% en español, con tono persuasivo y profesional.
-- [ ] `npm run build` se completa sin errores.
+- [ ] `npm run build` se completa sin errores y el bundle JS gzipped no supera 100 kB.
 - [ ] `npm run lint` pasa sin warnings.
+- [ ] Si está activa la media query `prefers-reduced-motion: reduce`, todas las animaciones de `motion` y Lenis se neutralizan automáticamente.
 
 ---
 

@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react';
+import { motion } from 'motion/react';
 import FeatureCard from '../components/FeatureCard.jsx';
+import { useScrollReveal } from '../hooks/useScrollReveal.js';
 
 const FEATURES = [
   {
@@ -56,25 +58,36 @@ const FEATURES = [
 
 const FeaturesBar = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [ref, isVisible] = useScrollReveal();
 
   const handleToggle = useCallback((index) => {
     setExpandedIndex((current) => (current === index ? null : index));
   }, []);
 
   return (
-    <section className="border-y border-white/5 bg-surface-container/30">
+    <section
+      ref={ref}
+      className={`reveal border-y border-white/5 bg-surface-container/30 ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="max-w-7xl mx-auto px-6 py-10">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-start">
           {FEATURES.map((feature, index) => (
-            <FeatureCard
+            <motion.div
               key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-              isExpanded={expandedIndex === index}
-              index={index}
-              onToggle={handleToggle}
-            />
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
+            >
+              <FeatureCard
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                isExpanded={expandedIndex === index}
+                index={index}
+                onToggle={handleToggle}
+              />
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import SocialCard from '../components/SocialCard.jsx';
+import { useScrollReveal } from '../hooks/useScrollReveal.js';
 
 const INSTAGRAM_ICON = (
   <svg
@@ -30,61 +31,66 @@ const TIKTOK_ICON = (
   </svg>
 );
 
-const Contact = () => (
-  <section
-    id="contacto"
-    className="relative pt-0 pb-20 md:pb-32 overflow-hidden"
-  >
-    <div
-      className="absolute inset-0 pointer-events-none"
-      aria-hidden="true"
-      style={{
-        background:
-          'radial-gradient(circle at 50% 100%, rgba(255,102,0,0.15), transparent 60%)',
-      }}
-    />
+const Contact = () => {
+  const [ref, isVisible] = useScrollReveal();
 
-    <div className="relative max-w-7xl mx-auto px-6">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-surface-container border border-white/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
-          Hablemos
-        </span>
-        <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-          ¡Hagamos Realidad tu{' '}
-          <span className="text-gradient-orange">Próxima Página Web!</span>
-        </h2>
-        <p className="text-text-medium text-lg leading-relaxed">
-          No necesitas llenar formularios aburridos. Haz clic en cualquiera de
-          nuestras redes sociales oficiales y escríbenos un mensaje directo para
-          coordinar tu Demostración Gratuita.
+  return (
+    <section
+      ref={ref}
+      id="contacto"
+      className={`reveal relative pt-0 pb-20 md:pb-32 overflow-hidden ${isVisible ? 'is-visible' : ''}`}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 100%, rgba(255,102,0,0.15), transparent 60%)',
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-surface-container border border-white/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
+            Hablemos
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+            ¡Hagamos Realidad tu{' '}
+            <span className="text-gradient-orange">Próxima Página Web!</span>
+          </h2>
+          <p className="text-text-medium text-lg leading-relaxed">
+            No necesitas llenar formularios aburridos. Haz clic en cualquiera de
+            nuestras redes sociales oficiales y escríbenos un mensaje directo para
+            coordinar tu Demostración Gratuita.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+          <SocialCard
+            name="Instagram"
+            description="Síguenos para ver tips de diseño web, lanzamientos de proyectos y escríbenos al DM para agendar tu demo."
+            ctaLabel="Enviar Mensaje en Instagram"
+            href="https://www.instagram.com/best.devfreelance?utm_source=qr&igsh=YTF3OWxsc296dmJz"
+            icon={INSTAGRAM_ICON}
+          />
+          <SocialCard
+            name="TikTok"
+            description="Mira nuestro proceso de programación en el día a día, el antes y después de nuestros clientes, y contáctanos por mensaje."
+            ctaLabel="Hablar por TikTok"
+            href="https://www.tiktok.com/@best.dev_freelance?_r=1&_t=ZS-96gcDfDaOBx"
+            icon={TIKTOK_ICON}
+          />
+        </div>
+
+        <p className="text-center text-text-medium mt-12 max-w-2xl mx-auto">
+          Atención disponible los 7 días de la semana.{' '}
+          <span className="text-white font-semibold">
+            ¡Escríbenos ahora mismo y responderemos a tu idea de negocio de inmediato!
+          </span>
         </p>
       </div>
-
-      <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-        <SocialCard
-          name="Instagram"
-          description="Síguenos para ver tips de diseño web, lanzamientos de proyectos y escríbenos al DM para agendar tu demo."
-          ctaLabel="Enviar Mensaje en Instagram"
-          href="https://www.instagram.com/best.devfreelance?utm_source=qr&igsh=YTF3OWxsc296dmJz"
-          icon={INSTAGRAM_ICON}
-        />
-        <SocialCard
-          name="TikTok"
-          description="Mira nuestro proceso de programación en el día a día, el antes y después de nuestros clientes, y contáctanos por mensaje."
-          ctaLabel="Hablar por TikTok"
-          href="https://www.tiktok.com/@best.dev_freelance?_r=1&_t=ZS-96gcDfDaOBx"
-          icon={TIKTOK_ICON}
-        />
-      </div>
-
-      <p className="text-center text-text-medium mt-12 max-w-2xl mx-auto">
-        Atención disponible los 7 días de la semana.{' '}
-        <span className="text-white font-semibold">
-          ¡Escríbenos ahora mismo y responderemos a tu idea de negocio de inmediato!
-        </span>
-      </p>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Contact;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Button from './Button.jsx';
 
 const NAV_LINKS = [
@@ -9,44 +9,12 @@ const NAV_LINKS = [
   { href: '#contacto', label: 'Redes' },
 ];
 
-const SCROLL_THRESHOLD = 80;
-const SCROLL_DELTA = 6;
-
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    let lastY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      const delta = currentY - lastY;
-
-      if (currentY < SCROLL_THRESHOLD) {
-        setVisible(true);
-      } else if (delta > SCROLL_DELTA) {
-        setVisible(false);
-        setMobileOpen(false);
-      } else if (delta < -SCROLL_DELTA) {
-        setVisible(true);
-      }
-
-      lastY = currentY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const handleLinkClick = () => setMobileOpen(false);
 
   return (
-    <header
-      className={`sticky top-0 z-50 bg-surface-base/70 backdrop-blur-xl border-b border-white/10 transition-transform duration-300 ease-in-out will-change-transform ${
-        visible ? 'translate-y-0' : '-translate-y-full'
-      }`}
-    >
+    <header className="sticky top-0 z-50 bg-surface-base/70 backdrop-blur-xl border-b border-white/10">
       <nav aria-label="Navegación principal" className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
           href="#hero"

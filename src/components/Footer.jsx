@@ -1,4 +1,5 @@
 import logo from '../assets/logo/logo.png';
+import { useScrollReveal } from '../hooks/useScrollReveal.js';
 
 const FOOTER_LINKS = [
   { href: '#hero', label: 'Inicio' },
@@ -8,9 +9,13 @@ const FOOTER_LINKS = [
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const [ref, isVisible] = useScrollReveal();
 
   return (
-    <footer className="border-t border-white/5 bg-surface-base">
+    <footer
+      ref={ref}
+      className={`reveal border-t border-white/5 bg-surface-base ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2">
           <img

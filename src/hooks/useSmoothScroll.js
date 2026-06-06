@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { getLenis } from './useLenis.js';
 
 export const useSmoothScroll = () => {
   useEffect(() => {
@@ -13,7 +14,14 @@ export const useSmoothScroll = () => {
       if (!element) return;
 
       event.preventDefault();
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      const lenis = getLenis();
+      if (lenis) {
+        lenis.scrollTo(element, { offset: -80 });
+      } else {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
       if (typeof history.pushState === 'function') {
         history.pushState(null, '', href);
       }
