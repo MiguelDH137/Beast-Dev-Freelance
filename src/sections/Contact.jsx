@@ -65,14 +65,14 @@ const Contact = () => (
           name="Instagram"
           description="Síguenos para ver tips de diseño web, lanzamientos de proyectos y escríbenos al DM para agendar tu demo."
           ctaLabel="Enviar Mensaje en Instagram"
-          href="https://instagram.com/beasts.dev"
+          href="https://www.instagram.com/best.devfreelance?utm_source=qr&igsh=YTF3OWxsc296dmJz"
           icon={INSTAGRAM_ICON}
         />
         <SocialCard
           name="TikTok"
           description="Mira nuestro proceso de programación en el día a día, el antes y después de nuestros clientes, y contáctanos por mensaje."
           ctaLabel="Hablar por TikTok"
-          href="https://tiktok.com/@beasts.dev"
+          href="https://www.tiktok.com/@best.dev_freelance?_r=1&_t=ZS-96gcDfDaOBx"
           icon={TIKTOK_ICON}
         />
       </div>

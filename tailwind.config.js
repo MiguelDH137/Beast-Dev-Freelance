@@ -12,12 +12,13 @@ export default {
           base: '#131313',
           container: '#1c1b1b',
         },
+        text: {
+          high: '#ffffff',
+          medium: '#a1a1aa',
+        },
       },
       fontFamily: {
         sans: ['Montserrat', 'system-ui', 'sans-serif'],
-      },
-      maxWidth: {
-        '7xl': '1280px',
       },
     },
   },
