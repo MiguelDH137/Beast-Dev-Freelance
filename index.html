@@ -2,10 +2,30 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/logo/logo.png" />
+    <link rel="icon" type="image/png" href="/og-image.png" />
+    <link rel="canonical" href="https://beasts.dev/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Beasts.dev Freelance — Creamos landing pages profesionales, modernas y optimizadas para móviles con un modelo de suscripción mensual. Solicita tu demo gratuita." />
     <meta name="theme-color" content="#131313" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Beasts.dev Freelance" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content="https://beasts.dev/" />
+    <meta property="og:title" content="Beasts.dev Freelance — Landing Pages que Convierten" />
+    <meta property="og:description" content="Creamos landing pages profesionales, modernas y optimizadas para móviles con un modelo de suscripción mensual. Solicita tu demo gratuita sin compromiso." />
+    <meta property="og:image" content="https://beasts.dev/og-image.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Logo de las Tres Bestias — Beasts.dev Freelance" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Beasts.dev Freelance — Landing Pages que Convierten" />
+    <meta name="twitter:description" content="Creamos landing pages profesionales con suscripción mensual. Solicita tu demo gratuita sin compromiso." />
+    <meta name="twitter:image" content="https://beasts.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Logo de las Tres Bestias — Beasts.dev Freelance" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +33,73 @@
       rel="stylesheet"
     />
     <title>Beasts.dev Freelance — Landing Pages que Convierten</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://beasts.dev/#organization",
+            "name": "Beasts.dev Freelance",
+            "url": "https://beasts.dev/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://beasts.dev/og-image.png",
+              "width": 512,
+              "height": 512
+            },
+            "description": "Equipo multidisciplinario de desarrolladores y diseñadores freelance especializados en landing pages profesionales de alta conversión.",
+            "sameAs": [
+              "https://www.instagram.com/best.devfreelance",
+              "https://www.tiktok.com/@best.dev_freelance"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://beasts.dev/#service",
+            "name": "Beasts.dev Freelance — Diseño y Desarrollo de Landing Pages",
+            "image": "https://beasts.dev/og-image.png",
+            "url": "https://beasts.dev/",
+            "description": "Creamos landing pages modernas, rápidas y optimizadas para móviles con un modelo de suscripción mensual. Incluye demo gratuita sin compromiso.",
+            "provider": { "@id": "https://beasts.dev/#organization" },
+            "areaServed": { "@type": "Country", "name": "ES" },
+            "serviceType": "Diseño y desarrollo de landing pages",
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Plan Esencial",
+                "price": "25",
+                "priceCurrency": "EUR",
+                "description": "Single Landing Page, Mobile Optimized, Basic SEO. Suscripción mensual."
+              },
+              {
+                "@type": "Offer",
+                "name": "Plan Profesional",
+                "price": "35",
+                "priceCurrency": "EUR",
+                "description": "Multi-page Sitio, Advanced SEO tactics, CMS Integration, Priority Support. Suscripción mensual."
+              },
+              {
+                "@type": "Offer",
+                "name": "Plan Pro + IA",
+                "price": "55",
+                "priceCurrency": "EUR",
+                "description": "Everything in Pro, AI Chatbot Integration, Dynamic Conversion. Suscripción mensual."
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://beasts.dev/#website",
+            "url": "https://beasts.dev/",
+            "name": "Beasts.dev Freelance",
+            "inLanguage": "es-ES",
+            "publisher": { "@id": "https://beasts.dev/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="bg-surface-base text-white">
     <div id="root"></div>
