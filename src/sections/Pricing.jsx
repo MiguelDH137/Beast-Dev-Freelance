@@ -42,7 +42,7 @@ const PLANS = [
 const Pricing = () => (
   <section
     id="pricing"
-    className="relative py-20 md:py-32 bg-gradient-to-b from-surface-base to-surface-container/40"
+    className="relative pt-10 md:pt-16 pb-20 md:pb-32 bg-gradient-to-b from-surface-base to-surface-container/40"
   >
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">

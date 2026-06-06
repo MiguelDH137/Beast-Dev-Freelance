@@ -24,7 +24,7 @@ const STEPS = [
 const Methodology = () => (
   <section
     id="metodologia"
-    className="relative py-20 md:py-32 overflow-hidden"
+    className="relative pt-20 md:pt-32 pb-10 md:pb-16 overflow-hidden"
   >
     <div
       className="absolute inset-0 pointer-events-none opacity-50"

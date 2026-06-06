@@ -33,7 +33,7 @@ const TIKTOK_ICON = (
 const Contact = () => (
   <section
     id="contacto"
-    className="relative py-20 md:py-32 overflow-hidden"
+    className="relative pt-0 pb-20 md:pb-32 overflow-hidden"
   >
     <div
       className="absolute inset-0 pointer-events-none"

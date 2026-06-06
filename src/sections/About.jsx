@@ -9,7 +9,7 @@ const SPECIALTIES = [
 const About = () => (
   <section
     id="nosotros"
-    className="relative py-20 md:py-32 overflow-hidden"
+    className="relative overflow-hidden"
   >
     <div
       className="absolute inset-0 pointer-events-none opacity-60"
@@ -20,7 +20,7 @@ const About = () => (
       }}
     />
 
-    <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div className="relative max-w-7xl mx-auto px-6 py-3 md:py-5 grid md:grid-cols-2 gap-12 items-center">
       <div>
         <span className="inline-block px-4 py-1.5 rounded-full bg-surface-container border border-white/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
           Sobre Nosotros
@@ -72,14 +72,11 @@ const About = () => (
         <div className="relative w-full max-w-xl flex flex-col items-center group">
           <img
             src={logo}
-            alt="Logo de las Tres Bestias — Lobo, Zorro y Dálmata"
+            alt="Logo de las Tres Bestias"
             className="w-full h-auto object-contain drop-shadow-[0_0_50px_rgba(255,102,0,0.45)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-3 group-hover:drop-shadow-[0_0_70px_rgba(255,102,0,0.7)] group-hover:brightness-110"
             width="512"
             height="512"
           />
-          <p className="text-center mt-6 text-text-medium text-sm tracking-wider uppercase transition-colors duration-300 group-hover:text-brand-primary">
-            Lobo · Zorro · Dálmata
-          </p>
         </div>
       </div>
     </div>

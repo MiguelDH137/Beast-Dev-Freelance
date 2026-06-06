@@ -1,28 +1,37 @@
 import PortfolioCard from '../components/PortfolioCard.jsx';
+import mondongoCars from '../assets/mockups/proyecto_mondongocars.png';
+import tecnoWorld from '../assets/mockups/proyecto_tecnoworld.png';
+import cloverModa from '../assets/mockups/proyecto_clovermoda.png';
 
 const PROJECTS = [
   {
-    title: 'TechNova Solutions',
-    category: 'Landing Corporativa',
+    title: 'Mondongo Cars',
+    category: 'Catálogo Automotriz',
     description:
-      'Diseño premium oscuro con acentos brillantes y un enfoque total en conversión B2B.',
+      'Catálogo automotriz dark premium con tarjetas minimalistas, tipografía moderna y detalles en naranja vibrante de alta conversión.',
+    image: mondongoCars,
+    href: 'https://catalogo-mondongo-cars.bungouseven.workers.dev/',
   },
   {
-    title: 'Aura Lifestyle',
-    category: 'E-commerce Minimalista',
+    title: 'Tecno World',
+    category: 'Sitio Corporativo',
     description:
-      'Catálogo ultrarrápido, navegación limpia y experiencia de compra sin fricción.',
+      'Sitio corporativo dark con estética gaming, tipografías audaces, iconos minimalistas y potentes acentos en naranja fosforescente de alto impacto.',
+    image: tecnoWorld,
+    href: 'https://landingpage-tecnoworld.vercel.app/',
   },
   {
-    title: 'Nexus AI Platform',
-    category: 'Landing con IA',
+    title: 'Clover Moda.',
+    category: 'E-commerce Editorial',
     description:
-      'Landing page con agente de IA integrado, captura de leads y demo conversacional 24/7.',
+      'E-commerce editorial minimalista, estética light luxury en tonos beige, tipografía elegante serif y acentos morados.',
+    image: cloverModa,
+    href: 'https://catalogo-clover-moda.bungouseven.workers.dev/',
   },
 ];
 
 const Portfolio = () => (
-  <section id="portafolio" className="py-20 md:py-32">
+  <section id="portafolio" className="pt-20 md:pt-32 pb-0">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <span className="inline-block px-4 py-1.5 rounded-full bg-surface-container border border-white/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
