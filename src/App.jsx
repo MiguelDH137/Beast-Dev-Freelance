@@ -11,6 +11,7 @@ const Methodology = lazy(() => import('./sections/Methodology.jsx'));
 const Pricing = lazy(() => import('./sections/Pricing.jsx'));
 const Portfolio = lazy(() => import('./sections/Portfolio.jsx'));
 const About = lazy(() => import('./sections/About.jsx'));
+const Social = lazy(() => import('./sections/Social.jsx'));
 
 const SectionFallback = () => (
   <div className="min-h-[200px]" aria-hidden="true" />
@@ -47,6 +48,9 @@ const App = () => {
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <About />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Social />
         </Suspense>
         <Contact />
       </main>

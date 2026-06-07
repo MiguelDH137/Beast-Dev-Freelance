@@ -6,7 +6,7 @@ const NAV_LINKS = [
   { href: '#pricing', label: 'Planes' },
   { href: '#portafolio', label: 'Proyectos' },
   { href: '#nosotros', label: 'Nosotros' },
-  { href: '#contacto', label: 'Redes' },
+  { href: '#redes', label: 'Redes' },
 ];
 
 const Navbar = () => {
